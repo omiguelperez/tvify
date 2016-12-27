@@ -1,0 +1,21 @@
+{
+  "name": "tvify",
+  "version": "1.0.0",
+  "description": "Una web para seleccionar tus shows favoritos",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omiguelperez/tvify.git"
+  },
+  "author": "Oscar Pérez <mr.omiguelperez@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omiguelperez/tvify/issues"
+  },
+  "homepage": "https://github.com/omiguelperez/tvify#readme",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
