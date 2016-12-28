@@ -1,0 +1,44 @@
+body {
+  background-color: #bdc3c7;
+  font-family: 'Roboto';
+  margin: 0;
+}
+
+#app-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+#app-header {
+  background-color: #2ecc71;
+  height: 10vh;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+#app-header h1 {
+  color: white;
+  line-height: 10vh;
+  margin: 0;
+}
+
+#app-body {
+  margin: 0 auto;
+  min-height: 75vh;
+  padding-top: 15vh;
+  width: 80%;
+}
+
+#app-footer {
+  min-height: 10vh;
+  width: 100%;
+}
+
+#app-footer p {
+  border-top: 1px solid #7f8c8d;
+  margin: 0 auto;
+  padding-top: 1.5em;
+  text-align: center;
+  width: 40%;
+}
