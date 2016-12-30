@@ -12,6 +12,7 @@ $(function () {
     '</article>'
 
   function renderShows (shows) {
+    $tvShowsContainer.find('.loader').remove()
     shows.forEach(function (show) {
       var article = template
         .replace(':name:', show.name)
@@ -20,11 +21,6 @@ $(function () {
         .replace(':summary:', show.summary)
       $tvShowsContainer.append($(article))
     })
-  }
-
-  function renderShowsAndRemoveLoader (shows) {
-    $tvShowsContainer.find('.loader').remove()
-    renderShows(shows)
   }
 
   $('#app-body')
@@ -45,7 +41,7 @@ $(function () {
           var shows = showsContainer.map(function (element) {
             return element.show
           })
-          renderShowsAndRemoveLoader(shows)
+          renderShows(shows)
         })
     })
 
@@ -53,9 +49,9 @@ $(function () {
     $.ajax('http://api.tvmaze.com/shows')
       .then(function (shows, textStatus, xhr) {
         localStorage.shows = JSON.stringify(shows)
-        renderShowsAndRemoveLoader(shows)
+        renderShows(shows)
       })
   } else {
-    renderShowsAndRemoveLoader(JSON.parse(localStorage.shows))
+    renderShows(JSON.parse(localStorage.shows))
   }
 })
