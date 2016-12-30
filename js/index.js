@@ -35,23 +35,19 @@ $(function () {
       var $loader = $('<div class="loader">')
       $loader.appendTo($tvShowsContainer)
 
-      $.ajax({
-        url: `http://api.tvmaze.com/search/shows?q=${busqueda}`,
-        success: function (showsContainer, textStatus, xhr) {
+      $.ajax(`http://api.tvmaze.com/search/shows?q=${busqueda}`)
+        .then(function (showsContainer, textStatus, xhr) {
           $loader.remove()
           var shows = showsContainer.map(function (element) {
             return element.show
           })
           renderShows(shows)
-        }
-      })
+        })
     })
 
-  $.ajax({
-    url: 'http://api.tvmaze.com/shows',
-    success: function (shows, textStatus, xhr) {
+  $.ajax('http://api.tvmaze.com/shows')
+    .then(function (shows, textStatus, xhr) {
       $tvShowsContainer.find('.loader').remove()
       renderShows(shows)
-    }
-  })
+    })
 })
