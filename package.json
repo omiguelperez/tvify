@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "description": "Una web para seleccionar tus shows favoritos",
   "scripts": {
-    "build-js": "browserify js/index.js -o js/app.js"
+    "public": "mkdir -p public",
+    "build-css": "uglifycss src/css/fonts.css src/css/index.css > public/app.css",
+    "build-js": "browserify src/js/index.js -o public/app.js && browserify public/app.js | uglifyjs > public/app.js",
+    "copy-files": "cp -r src/fonts public/ && cp src/index.html public/index.html",
+    "build": "npm run public && npm run build-css && npm run build-js && npm run copy-files",
+    "serve": "serve public"
   },
   "repository": {
     "type": "git",
@@ -16,9 +21,12 @@
   },
   "homepage": "https://github.com/omiguelperez/tvify#readme",
   "dependencies": {
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "serve": "^2.1.2"
   },
   "devDependencies": {
-    "browserify": "^13.1.1"
+    "browserify": "^13.1.1",
+    "uglifycss": "0.0.25",
+    "uglifyjs": "^2.4.10"
   }
 }
