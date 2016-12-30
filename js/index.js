@@ -22,6 +22,11 @@ $(function () {
     })
   }
 
+  function renderShowsAndRemoveLoader (shows) {
+    $tvShowsContainer.find('.loader').remove()
+    renderShows(shows)
+  }
+
   $('#app-body')
     .find('form')
     .submit(function (e) {
@@ -37,17 +42,20 @@ $(function () {
 
       $.ajax(`http://api.tvmaze.com/search/shows?q=${busqueda}`)
         .then(function (showsContainer, textStatus, xhr) {
-          $loader.remove()
           var shows = showsContainer.map(function (element) {
             return element.show
           })
-          renderShows(shows)
+          renderShowsAndRemoveLoader(shows)
         })
     })
 
-  $.ajax('http://api.tvmaze.com/shows')
-    .then(function (shows, textStatus, xhr) {
-      $tvShowsContainer.find('.loader').remove()
-      renderShows(shows)
-    })
+  if (!localStorage.shows) {
+    $.ajax('http://api.tvmaze.com/shows')
+      .then(function (shows, textStatus, xhr) {
+        localStorage.shows = JSON.stringify(shows)
+        renderShowsAndRemoveLoader(shows)
+      })
+  } else {
+    renderShowsAndRemoveLoader(JSON.parse(localStorage.shows))
+  }
 })
