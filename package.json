@@ -1,9 +1,9 @@
 {
   "name": "tvify",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Una web para seleccionar tus shows favoritos",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-js": "browserify js/index.js -o js/app.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   "homepage": "https://github.com/omiguelperez/tvify#readme",
   "dependencies": {
     "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.1"
   }
 }
