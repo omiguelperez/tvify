@@ -8,8 +8,14 @@ $(function () {
       '<div class="right info">' +
         '<h3>:name:</h3>' +
         '<p>:summary:</p>' +
+        '<button class="like">❤️</button>' +
       '</div>' +
     '</article>'
+
+  $tvShowsContainer.on('click', 'button.like', function (e) {
+    var $this = $(this)
+    $this.closest('.tv-show').toggleClass('liked')
+  })
 
   function renderShows (shows) {
     $tvShowsContainer.find('.loader').remove()
