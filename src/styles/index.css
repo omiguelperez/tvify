@@ -25,6 +25,15 @@ body {
   margin: 0;
 }
 
+#app-header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+#app-header h1 a:hover {
+  color: #ccc;
+}
+
 #app-body {
   margin: 0 auto;
   min-height: 75vh;
