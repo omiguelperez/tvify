@@ -1,6 +1,10 @@
-var $ = require('jquery')
+const $ = require('jquery')
+
+console.log('se ha cargado el script')
 
 $(function () {
+
+  console.log('dentro de jquery')
 
   var $tvShowsContainer = $('#app-body').find('.tv-shows')
   var template = '<article class="tv-show">' +
@@ -54,12 +58,15 @@ $(function () {
     })
 
   if (!localStorage.shows) {
+    console.log('haciendo la solicitud porque no hay datos en localStorage')
     $.ajax('http://api.tvmaze.com/shows')
       .then(function (shows, textStatus, xhr) {
+        console.log('shows', shows)
         localStorage.shows = JSON.stringify(shows)
         renderShows(shows)
       })
   } else {
+    console.log('no hay que hacer la solicitud porque hay datos en localStorage')
     renderShows(JSON.parse(localStorage.shows))
   }
 })
