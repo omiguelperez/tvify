@@ -6,7 +6,7 @@ $tvShowsContainer.on('click', 'button.like', function (e) {
   let $this = $(this)
   let id = $this.data('id')
 
-  $.post(`/votes/${id}`, () => {
+  $.post(`/api/votes/${id}`, () => {
     $this.closest('.tv-show').toggleClass('liked')
   })
 })
