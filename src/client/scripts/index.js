@@ -1,10 +1,10 @@
 import $ from 'jquery'
 import page from 'page'
-import $tvShowsContainer from 'src/scripts/tv-shows-container'
-import { getShows, searchShows } from 'src/scripts/tvmaze-api-client'
-import renderShows from 'src/scripts/render'
+import $tvShowsContainer from 'src/client/scripts/tv-shows-container'
+import { getShows, searchShows } from 'src/client/scripts/tvmaze-api-client'
+import renderShows from 'src/client/scripts/render'
 import qs from 'qs'
-import 'src/scripts/search-form'
+import 'src/client/scripts/search-form'
 
 page('/', function () {
   $tvShowsContainer.find('.tv-show').remove()

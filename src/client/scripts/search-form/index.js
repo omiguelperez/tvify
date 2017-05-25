@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import page from 'page'
-import $tvShowsContainer from 'src/scripts/tv-shows-container'
+import $tvShowsContainer from 'src/client/scripts/tv-shows-container'
 
 $('#app-body')
   .find('form')
