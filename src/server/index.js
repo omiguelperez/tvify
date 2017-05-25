@@ -5,6 +5,7 @@ import http from 'http'
 
 const port = process.env.PORT || 3000
 const app = express()
+const server = http.createServer(app)
 
 app.use(express.static('public'))
 
@@ -16,4 +17,4 @@ app.post('/show', (req, res) => {
 
 })
 
-app.listen(port, () => console.log(`Server running at http://localhost:${port}`))
+server.listen(port, () => console.log(`Server running at http://localhost:${port}`))
