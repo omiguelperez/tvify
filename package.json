@@ -8,7 +8,7 @@
     "build-js": "NODE_PATH=. browserify -t [ babelify --presets [ es2015 ] ] src/client/scripts/index.js -o public/app.js && uglifyjs public/app.js -o public/app.min.js",
     "copy-files": "cp -r src/client/fonts public/ && cp src/client/index.html public/index.html",
     "build": "npm run public && npm run build-css && npm run build-js && npm run copy-files",
-    "serve": "supervisor src/server"
+    "serve": "babel-node --presets es2015 src/server"
   },
   "repository": {
     "type": "git",
@@ -21,13 +21,14 @@
   },
   "homepage": "https://github.com/omiguelperez/tvify#readme",
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.18.0",
     "express": "^4.15.3",
     "jquery": "^3.1.1",
     "page": "^1.7.1",
     "qs": "^6.3.0"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.18.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "supervisor": "^0.12.0",
