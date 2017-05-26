@@ -4,10 +4,16 @@ const $tvShowsContainer = $('#app-body').find('.tv-shows')
 
 $tvShowsContainer.on('click', 'button.like', function (e) {
   let $this = $(this)
-  let id = $this.data('id')
+  let $article = $this.closest('.tv-show')
+  let id = $article.data('id')
 
-  $.post(`/api/votes/${id}`, () => {
-    $this.closest('.tv-show').toggleClass('liked')
+  $.post(`/api/vote/${id}`, () => {
+    let $counter = $article.find('.count')
+    let content = $counter.html()
+    let count = Number(content)
+    count += 1
+    $counter.html(count)
+    $article.toggleClass('liked')
   })
 })
 

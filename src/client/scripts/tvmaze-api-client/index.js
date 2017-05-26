@@ -3,7 +3,14 @@ import $ from 'jquery'
 export function getShows (done) {
   $.ajax('http://api.tvmaze.com/shows')
     .then((shows, textStatus, xhr) => {
-      done(shows)
+      $.get('/api/votes', (votes) => {
+        shows = shows.map(show => {
+          let vote = votes.filter(vote => vote.showId === show.id)[0]
+          show.count = vote ? vote.count : 0
+          return show
+        })
+        done(shows)
+      })
     })
 }
 

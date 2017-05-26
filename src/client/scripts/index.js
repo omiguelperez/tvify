@@ -8,15 +8,10 @@ import 'src/client/scripts/search-form'
 
 page('/', function () {
   $tvShowsContainer.find('.tv-show').remove()
-
-  if (!localStorage.shows) {
-    getShows(shows => {
-      localStorage.shows = JSON.stringify(shows)
-      renderShows(shows)
-    })
-  } else {
-    renderShows(JSON.parse(localStorage.shows))
-  }
+  getShows(shows => {
+    localStorage.shows = JSON.stringify(shows)
+    renderShows(shows)
+  })
 })
 
 page('/search', function (context, next) {
