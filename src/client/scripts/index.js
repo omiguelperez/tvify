@@ -8,10 +8,7 @@ import 'src/client/scripts/search-form'
 
 page('/', function () {
   $tvShowsContainer.find('.tv-show').remove()
-  getShows(shows => {
-    localStorage.shows = JSON.stringify(shows)
-    renderShows(shows)
-  })
+  getShows(shows => renderShows(shows))
 })
 
 page('/search', function (context, next) {

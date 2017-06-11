@@ -5,8 +5,6 @@ import Vote from 'src/server/models'
 
 const router = express.Router()
 
-let votes = {}
-
 router.get('/votes', (req, res) => {
   Vote.find({}, (err, docs) => {
     if (err) return res.status(500).json(err)
@@ -25,6 +23,8 @@ router.post('/vote/:id', (req, res) => {
   let id = req.params.id
 
   Vote.findOne({ showId: id }, (err, doc) => {
+    if (err) return res.status(500).json(err)
+
     if (doc) {
       doc.count += 1
       doc.save(onSave(doc))
