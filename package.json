@@ -29,7 +29,8 @@
     "jquery": "^3.1.1",
     "mongoose": "^4.10.2",
     "page": "^1.7.1",
-    "qs": "^6.3.0"
+    "qs": "^6.3.0",
+    "tv-maze": "^1.1.0"
   },
   "devDependencies": {
     "babel-watch": "^2.0.6",

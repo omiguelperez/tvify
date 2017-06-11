@@ -17,8 +17,7 @@ page('/search', function (context, next) {
   $tvShowsContainer.find('.tv-show').remove()
 
   let { query } = qs.parse(context.querystring)
-  searchShows(query, response => {
-    let shows = response.map(element => element.show)
+  searchShows(query, shows => {
     renderShows(shows)
   })
 })
