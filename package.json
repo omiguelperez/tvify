@@ -5,7 +5,7 @@
   "scripts": {
     "public": "mkdir -p public",
     "build-css": "uglifycss src/client/styles/fonts.css src/client/styles/index.css > public/app.min.css",
-    "build-js": "NODE_PATH=. browserify -t [ babelify --presets [ es2015 ] ] src/client/scripts/index.js -o public/app.js && uglifyjs public/app.js -o public/app.min.js",
+    "build-js": "NODE_PATH=. browserify -t [ babelify --presets [ es2015 ] ] src/client/components/index.js -o public/app.js && uglifyjs public/app.js -o public/app.min.js",
     "copy-files": "cp -r src/client/fonts public/ && cp src/client/index.html public/index.html",
     "build": "npm run public && npm run build-css && npm run build-js && npm run copy-files",
     "serve": "NODE_PATH=. babel-watch --presets es2015 src/server",

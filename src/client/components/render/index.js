@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import $tvShowsContainer from 'src/client/scripts/tv-shows-container'
+import $tvShowsContainer from 'src/client/components/tv-shows-container'
 
 const template = `<article data-id=:id: class="tv-show">
     <div class="left img-container">
