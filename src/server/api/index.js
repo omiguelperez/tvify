@@ -17,6 +17,18 @@ router.get('/shows', (req, res) => {
   })
 })
 
+router.get('/show/:id', (req, res) => {
+  let showId = req.params.id
+
+  client.show(showId, (err, show) => {
+    if (err) return res.status(500).json(err)
+
+    addVotes([ show ], shows => {
+      res.json(shows[0])
+    })
+  })
+})
+
 router.get('/search', (req, res) => {
   let query = req.query.q
 

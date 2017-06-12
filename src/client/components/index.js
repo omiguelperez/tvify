@@ -2,7 +2,7 @@ import $ from 'jquery'
 import page from 'page'
 import $tvShowsContainer from 'src/client/components/tv-shows-container'
 import { getShows, searchShows } from 'src/client/components/tvmaze-api-client'
-import renderShows from 'src/client/components/render'
+import { renderChat, renderShows } from 'src/client/components/render'
 import qs from 'qs'
 import 'src/client/components/search-form'
 
@@ -20,6 +20,11 @@ page('/search', function (context, next) {
   searchShows(query, shows => {
     renderShows(shows)
   })
+})
+
+page('/chat/:showId', function (ctx, next) {
+  $tvShowsContainer.find('.tv-show').remove()
+  renderChat(ctx.params.showId)
 })
 
 page()
