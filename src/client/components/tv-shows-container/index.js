@@ -27,6 +27,32 @@ $tvShowsContainer.on('keypress', '.chat-nick', function (e) {
   $chatInput.prop('disabled', $this.val().length === 0)
 })
 
+$tvShowsContainer.on('keypress', '.chat-input', function (ev) {
+  let $this = $(this)
+  let nick = $('.chat-nick').val()
+
+  if (ev.which === 13) {
+    let message = $this.val()
+
+    socket.emit('message', { nick, message })
+    addMessage(nick, message)
+
+    $this.val('')
+  }
+})
+
+socket.on('message', msg => {
+  let { nick, message } = msg
+
+  addMessage(nick, message)
+})
+
+function addMessage (nick, message) {
+  let $chatBody = $('.chat-body')
+
+  $chatBody.append(`<p><b>${nick}: </b>${message}</p>`)
+}
+
 $tvShowsContainer.on('click', 'button.like', function (e) {
   let $this = $(this)
   let $article = $this.closest('.tv-show')
@@ -42,4 +68,5 @@ socket.on('vote:done', vote => {
 
   $show.toggleClass('liked')
 })
+
 export default $tvShowsContainer

@@ -26,6 +26,10 @@ io.on('connection', socket => {
       socket.broadcast.emit('vote:done', vote)
     })
   })
+
+  socket.on('message', msg => {
+    socket.broadcast.emit('message', msg)
+  })
 })
 
 app.use(express.static('public'))
